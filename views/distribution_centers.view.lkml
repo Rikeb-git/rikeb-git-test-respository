@@ -23,7 +23,10 @@ view: distribution_centers {
     type: string
     sql: ${TABLE}."NAME" ;;
   }
-
+  dimension: name_id {
+    type: string
+    sql: ${name} || ' ' || ${id} ;;
+  }
   measure: count {
     type: count
     drill_fields: [id, name, products.count]
