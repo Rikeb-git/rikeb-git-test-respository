@@ -49,7 +49,10 @@ view: products {
     type: string
     sql: ${TABLE}."SKU" ;;
   }
-
+  measure:  profit {
+    type:  number
+    sql: ${retail_price} - ${cost} ;;
+  }
   measure: count {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
