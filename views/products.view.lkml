@@ -67,7 +67,7 @@ view: products {
     sql: ${retail_price} ;;
   }
 
-  measure: count_of_allegra_order {
+  measure: count_of_non_allegra_k_order {
     type: count
     filters: {
       field: brand
