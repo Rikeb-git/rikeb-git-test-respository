@@ -61,4 +61,18 @@ view: products {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
   }
+  measure: category_count {
+    type: sum
+    sql:
+    CASE
+      WHEN ${category} = '{% parameter category_to_count %}'
+      THEN 1
+      ELSE 0
+    END
+  ;;
+  }
+
+  parameter: category_to_count {
+    type: string
+  }
 }
