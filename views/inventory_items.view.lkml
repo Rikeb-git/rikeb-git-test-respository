@@ -97,7 +97,7 @@ view: inventory_items {
     type: sum
     sql:
       CASE
-        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = EXTRACT(YEAR FROM ${sold_date})
+        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = EXTRACT(YEAR FROM ${created_date})
         THEN ${TABLE}.PRODUCT_RETAIL_PRICE
       END ;;
   }
