@@ -71,7 +71,7 @@ view: products {
     type: count
     filters: {
       field: brand
-      value: "Allegra K"
+      value: "-Allegra K"
     }
   }
 }
