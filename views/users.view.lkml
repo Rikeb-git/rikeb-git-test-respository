@@ -68,7 +68,10 @@ view: users {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
   }
-
+dimension: Full_Name {
+  type:  string
+  sql: ${first_name} || ${last_name} ;;
+}
   dimension: state {
     type: string
     sql: ${TABLE}."STATE" ;;
