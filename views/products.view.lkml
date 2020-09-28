@@ -66,4 +66,12 @@ view: products {
     type: sum
     sql: ${retail_price} ;;
   }
+
+  measure: count_of_allegra_order {
+    type: count
+    filters: {
+      field: brand
+      value: "Allegra K"
+    }
+  }
 }
