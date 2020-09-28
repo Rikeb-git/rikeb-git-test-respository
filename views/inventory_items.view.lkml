@@ -88,4 +88,17 @@ view: inventory_items {
     type: count
     drill_fields: [id, product_name, products.id, products.name, order_items.count]
   }
+
+  parameter: date_filter {
+    type: date
+  }
+
+  measure: product_retail_price_year_to_selected_date {
+    type: sum
+    sql:
+      CASE
+        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = EXTRACT(YEAR FROM ${sold_date})
+        THEN ${TABLE}.PRODUCT_RETAIL_PRICE
+      END ;;
+  }
 }
