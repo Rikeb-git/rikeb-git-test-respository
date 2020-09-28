@@ -97,7 +97,17 @@ view: inventory_items {
     type: sum
     sql:
       CASE
-        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = "${created_year}"
+        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = ${created_year}
+        THEN ${TABLE}.PRODUCT_RETAIL_PRICE
+      END ;;
+  }
+
+  measure: product_retail_month_to_selected_date {
+    type: sum
+    sql:
+      CASE
+        WHEN EXTRACT(MONTH FROM CAST({% parameter date_filter %} AS DATE)) = ${created_month}
+        AND EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = ${created_year}
         THEN ${TABLE}.PRODUCT_RETAIL_PRICE
       END ;;
   }
