@@ -45,6 +45,13 @@ view: products {
     sql: ${TABLE}."RETAIL_PRICE" ;;
   }
 
+  dimension: retail_price_tier {
+    type: tier
+    tiers: [0, 10, 20, 30, 40, 50, 60, 70, 80]
+    style: relational
+    sql: ${retail_price} ;;
+  }
+
   dimension: sku {
     type: string
     sql: ${TABLE}."SKU" ;;
@@ -61,6 +68,7 @@ view: products {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
   }
+<<<<<<< HEAD
   measure: category_count {
     type: sum
     sql:
@@ -74,5 +82,19 @@ view: products {
 
   parameter: category_to_count {
     type: string
+=======
+
+  measure: total_retail_price {
+    type: sum
+    sql: ${retail_price} ;;
+  }
+
+  measure: count_of_non_allegra_k_order {
+    type: count
+    filters: {
+      field: brand
+      value: "-Allegra K"
+    }
+>>>>>>> branch 'master' of https://github.com/Rikeb-git/rikeb-git-test-respository.git
   }
 }

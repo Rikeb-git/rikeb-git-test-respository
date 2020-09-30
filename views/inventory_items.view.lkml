@@ -75,6 +75,7 @@ view: inventory_items {
       raw,
       time,
       date,
+      day_of_week,
       week,
       month,
       quarter,
@@ -86,5 +87,28 @@ view: inventory_items {
   measure: count {
     type: count
     drill_fields: [id, product_name, products.id, products.name, order_items.count]
+  }
+
+  parameter: date_filter {
+    type: date
+  }
+
+  measure: product_retail_price_year_to_selected_date {
+    type: sum
+    sql:
+      CASE
+        WHEN EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = ${created_year}
+        THEN ${TABLE}.PRODUCT_RETAIL_PRICE
+      END ;;
+  }
+
+  measure: product_retail_month_to_selected_date {
+    type: sum
+    sql:
+      CASE
+        WHEN EXTRACT(MONTH FROM CAST({% parameter date_filter %} AS DATE)) = ${created_month}
+        AND EXTRACT(YEAR FROM CAST({% parameter date_filter %} AS DATE)) = ${created_year}
+        THEN ${TABLE}.PRODUCT_RETAIL_PRICE
+      END ;;
   }
 }
