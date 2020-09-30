@@ -39,5 +39,9 @@ view: user_order_facts {
     timeframes: [date,month]
     sql: ${TABLE}."LAST_ORDER" ;;
   }
+  measure: average_user_lifetime_value {
+    type: average
+    sql: ${lifetime_value}/${lifetime_order_count} ;;
+  }
 
 }
