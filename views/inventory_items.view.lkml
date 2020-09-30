@@ -114,4 +114,15 @@ view: inventory_items {
         THEN ${TABLE}.PRODUCT_RETAIL_PRICE
       END ;;
   }
+
+  dimension_group: created_new {
+    type: time
+    timeframes: [date, month, day_of_week, day_of_week_index]
+    sql: ${TABLE}."CREATED_AT" ;;
+  }
+
+  dimension: until_today {
+    type: yesno
+    sql: ${created_new_day_of_week_index} <= DAYOFWEEK(CURRENT_DATE)-1 AND ${created_new_day_of_week_index} >= 0 ;;
+  }
 }
