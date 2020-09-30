@@ -46,7 +46,7 @@ view: user_order_facts {
 
   measure: average_user_lifetime_order_count {
     type: average
-    sql: ${lifetime_order_count}/  NULLIF (datediff(months, ${TABLE}."FIRST_ORDER",${TABLE}."LAST_ORDER"), 0) ;;
+    sql: ${lifetime_order_count}/  NULLIF (datediff(years, ${TABLE}."FIRST_ORDER",${TABLE}."LAST_ORDER"), 0) ;;
   }
 
 
