@@ -45,6 +45,6 @@ view: user_order_facts {
   }
   measure: average_user_lifetime_order_count {
     type: average
-    sql: ${lifetime_order_count}/(${first_order_date}+${last_order_date}) ;;
+    sql: ${lifetime_order_count}/(${first_order_month}+${last_order_month}) ;;
   }
 }
