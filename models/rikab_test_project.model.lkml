@@ -69,5 +69,6 @@ explore: products {
     relationship: many_to_one
   }
 }
+explore: users {
 
-explore: users {}
+ }

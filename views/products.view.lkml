@@ -68,7 +68,7 @@ view: products {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
   }
-<<<<<<< HEAD
+
   measure: category_count {
     type: sum
     sql:
@@ -81,8 +81,7 @@ view: products {
   }
 
   parameter: category_to_count {
-    type: string
-=======
+    type: string}
 
   measure: total_retail_price {
     type: sum
@@ -95,6 +94,5 @@ view: products {
       field: brand
       value: "-Allegra K"
     }
->>>>>>> branch 'master' of https://github.com/Rikeb-git/rikeb-git-test-respository.git
-  }
+}
 }
