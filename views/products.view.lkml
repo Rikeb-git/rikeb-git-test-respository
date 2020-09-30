@@ -56,11 +56,32 @@ view: products {
     type: string
     sql: ${TABLE}."SKU" ;;
   }
-
+  measure:  profit {
+    type:  number
+    sql: ${retail_price} - ${cost} ;;
+  }
+  measure: markup_price {
+    type:  number
+    sql: ${retail_price} * 1.20 ;;
+  }
   measure: count {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
   }
+
+  measure: category_count {
+    type: sum
+    sql:
+    CASE
+      WHEN ${category} = '{% parameter category_to_count %}'
+      THEN 1
+      ELSE 0
+    END
+  ;;
+  }
+
+  parameter: category_to_count {
+    type: string}
 
   measure: total_retail_price {
     type: sum
@@ -73,5 +94,5 @@ view: products {
       field: brand
       value: "-Allegra K"
     }
-  }
+}
 }
