@@ -10,6 +10,7 @@ view: user_order_facts {
       left join users on order_items.user_id = users.id
       group by 1
        ;;
+
   }
 
   dimension: user_id {
