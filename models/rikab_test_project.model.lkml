@@ -12,7 +12,18 @@ persist_with: rikab_test_project_default_datagroup
 
 explore: distribution_centers {}
 
-explore: etl_jobs {}
+explore: Vendor_Spend {}
+
+explore: Portfolio {}
+
+explore: KPI_Card {}
+
+explore: Geo_Map {}
+
+explore: TrendByCategory {}
+
+explore: SpendvsBudget {}
+
 
 explore: events {
   join: users {
